@@ -21,7 +21,7 @@ module.exports = {
       },
 
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /nide_modules/,
         use: {
           "loader": "babel-loader"
@@ -37,14 +37,14 @@ module.exports = {
     hot: true
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'Development',
-    }),
     new MiniCssExtractPlugin()
   ],
+
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    clean: true,
+    path: path.resolve(__dirname, "dist"),
   },
 };
